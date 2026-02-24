@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AscendBet — Free Virtual Betting Challenge",
+  title: "AscendBet — Prove Your Discipline. Get Funded",
   description:
     "Join the free 14–21 day virtual betting challenge. Bet on real football matches with real odds. Top performers qualify for partner-funded bonus accounts.",
   icons: {
