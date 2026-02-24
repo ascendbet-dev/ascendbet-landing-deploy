@@ -35,6 +35,14 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "AscendBet — Prove Your Discipline. Get Funded",
+    description:
+      "Join the free 14–21 day virtual betting challenge and qualify for funded bonus accounts.",
+    images: ["/ascendbet-preview.png"],
+  },
 };
 
 export default function RootLayout({
