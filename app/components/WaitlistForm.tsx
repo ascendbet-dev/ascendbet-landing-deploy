@@ -1,16 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+
+    const { error } = await supabase.from("waitlist").insert([
+      {
+        first_name: firstName,
+        email: email,
+      },
+    ]);
+
+    if (error) {
+      alert("This email may already exist or something went wrong.");
+      setLoading(false);
+      return;
+    }
+
     setSubmitted(true);
-  }
+    setLoading(false);
+  };
 
   if (submitted) {
     return (
@@ -36,6 +54,7 @@ export default function WaitlistForm() {
         required
         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder:text-zinc-400 backdrop-blur-md transition focus:border-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30"
       />
+
       <input
         type="email"
         placeholder="Email"
@@ -44,11 +63,13 @@ export default function WaitlistForm() {
         required
         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder:text-zinc-400 backdrop-blur-md transition focus:border-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30"
       />
+
       <button
         type="submit"
-        className="w-full rounded-xl bg-[#7C3AED] px-6 py-3.5 font-semibold text-white transition hover:bg-[#6d28d9] active:scale-[0.98]"
+        disabled={loading}
+        className="w-full rounded-xl bg-[#7C3AED] px-6 py-3.5 font-semibold text-white transition hover:bg-[#6d28d9] active:scale-[0.98] disabled:opacity-60"
       >
-        Join Waitlist
+        {loading ? "Joining..." : "Join Waitlist"}
       </button>
     </form>
   );
