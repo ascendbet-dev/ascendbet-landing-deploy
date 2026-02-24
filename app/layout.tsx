@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   title: "AscendBet — Prove Your Discipline. Get Funded",
   description:
     "Join the free 14–21 day virtual betting challenge. Bet on real football matches with real odds. Top performers qualify for partner-funded bonus accounts.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
