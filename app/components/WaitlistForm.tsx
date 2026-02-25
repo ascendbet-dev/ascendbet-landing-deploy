@@ -9,19 +9,33 @@ export default function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address (e.g. name@gmail.com)");
+      return;
+    }
+
     setLoading(true);
 
     const { error } = await supabase.from("waitlist").insert([
       {
-        first_name: firstName,
-        email: email,
+        first_name: firstName.trim(),
+        email: email.trim().toLowerCase(),
       },
     ]);
 
     if (error) {
-      alert("This email may already exist or something went wrong.");
+      if (error.code === "23505") {
+        alert("You have already joined the waitlist with this email.");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
       setLoading(false);
       return;
     }
