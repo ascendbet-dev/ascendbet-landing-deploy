@@ -25,15 +25,13 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
+      {/* LEFT SIDE — LOGO */}
       <Link
         href="/"
         className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0A1F] rounded-lg"
       >
-        {/* Logo */}
         {logoError ? (
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(124,58,237,0.8)]"></div>
-          </div>
+          <div className="h-2 w-2 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(124,58,237,0.8)]" />
         ) : (
           <Image
             src="/logo.png"
@@ -46,7 +44,6 @@ export default function Header() {
           />
         )}
 
-        {/* Brand Text */}
         <div className="flex flex-col leading-tight">
           <span
             className="text-sm md:text-lg tracking-widest text-purple-300"
@@ -56,19 +53,22 @@ export default function Header() {
           </span>
 
           <span className="hidden sm:block text-[10px] md:text-xs text-purple-300 drop-shadow-[0_0_6px_rgba(124,58,237,0.6)]">
-  Get Funded to Bet.
-</span>
+            Get Funded to Bet.
+          </span>
         </div>
+      </Link>
+
+      {/* RIGHT SIDE — CTA */}
       <button
-  onClick={() =>
-    document.getElementById("waitlist")?.scrollIntoView({
-      behavior: "smooth",
-    })
-  }
-  className="rounded-xl bg-[#7C3AED] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6d28d9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0A1F] active:scale-[0.98] md:px-6 md:py-3 md:text-base"
->
-  Join Waitlist
-</button>
+        onClick={() =>
+          document.getElementById("waitlist")?.scrollIntoView({
+            behavior: "smooth",
+          })
+        }
+        className="rounded-xl bg-[#7C3AED] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6d28d9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0A1F] active:scale-[0.98] md:px-6 md:py-3 md:text-base"
+      >
+        Join Waitlist
+      </button>
     </header>
   );
 }
