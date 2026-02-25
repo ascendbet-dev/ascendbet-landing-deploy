@@ -121,17 +121,21 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="mt-8 flex justify-center">
-              <Link href="#waitlist">
-                <motion.span
-                  className="inline-block rounded-xl bg-[#7c3aed] px-8 py-3.5 font-semibold text-white shadow-[0_4px_14px_rgba(124,58,237,0.4)] hover:shadow-[0_4px_24px_rgba(124,58,237,0.5),0_0_32px_6px_rgba(124,58,237,0.3)]"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Join the Waitlist
-                </motion.span>
-              </Link>
-            </div>
+          <div className="mt-8 flex justify-center">
+  <motion.button
+    onClick={() =>
+      document.getElementById("waitlist")?.scrollIntoView({
+        behavior: "smooth",
+      })
+    }
+    className="rounded-xl bg-[#7c3aed] px-8 py-3.5 font-semibold text-white shadow-[0_4px_14px_rgba(124,58,237,0.4)] hover:shadow-[0_4px_24px_rgba(124,58,237,0.5),0_0_32px_6px_rgba(124,58,237,0.3)]"
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.98 }}
+    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+  >
+    Join the Waitlist
+  </motion.button>
+</div>
           </div>
         </motion.div>
       </div>
