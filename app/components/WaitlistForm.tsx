@@ -15,7 +15,7 @@ export default function WaitlistForm() {
 
     const { error } = await supabase.from("waitlist").insert([
       {
-        first_name: name,
+        first_name: firstName,
         email: email,
       },
     ]);
@@ -48,7 +48,7 @@ export default function WaitlistForm() {
     >
       <input
         type="text"
-        placeholder="First Name"
+        placeholder="Name"
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
         required
