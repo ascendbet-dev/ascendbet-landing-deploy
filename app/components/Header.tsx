@@ -59,15 +59,16 @@ export default function Header() {
   Get Funded to Bet.
 </span>
         </div>
-      </Link>
-
-      {/* CTA */}
-      <Link
-        href="#waitlist"
-        className="rounded-xl bg-[#7C3AED] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6d28d9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0A1F] active:scale-[0.98] md:px-6 md:py-3 md:text-base"
-      >
-        Join Waitlist
-      </Link>
+      <button
+  onClick={() =>
+    document.getElementById("waitlist")?.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+  className="rounded-xl bg-[#7C3AED] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6d28d9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0A1F] active:scale-[0.98] md:px-6 md:py-3 md:text-base"
+>
+  Join Waitlist
+</button>
     </header>
   );
 }
