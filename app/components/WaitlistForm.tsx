@@ -15,7 +15,7 @@ export default function WaitlistForm() {
 
     const { error } = await supabase.from("waitlist").insert([
       {
-        first_name: Name,
+        first_name: name,
         email: email,
       },
     ]);
